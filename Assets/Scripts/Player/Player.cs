@@ -16,8 +16,9 @@ public class Player : GenericSingleton<Player>
     private PlayerMovement _playerMovement;
 
 
-    private void Awake()
+    private new void Awake()
     {
+        base.Awake();
         _playerMovement = GetComponent<PlayerMovement>();
     }
 
