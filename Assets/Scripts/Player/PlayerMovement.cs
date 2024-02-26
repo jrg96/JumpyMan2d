@@ -1,6 +1,7 @@
 using UnityEngine;
+using UnityEngine.Windows;
 
-[RequireComponent(typeof(PlayerInput))]
+[RequireComponent(typeof(PlayerInput), typeof(PlayerCollision))]
 public class PlayerMovement : MonoBehaviour
 {
     /*
@@ -16,18 +17,48 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField]
     private PlayerInput _playerInput;
+    private PlayerCollision _playerCollision;
     private Rigidbody2D _rigidBody;
 
+    private Vector3 _currentMovement;
+
+
+    /*
+     * Unity Functions
+     */
     private void Awake()
     {
         _playerInput = GetComponent<PlayerInput>();
+        _playerCollision = GetComponent<PlayerCollision>();
         _rigidBody = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
     private void Update()
     {
-        var input = _playerInput.GetDirection();
-        _rigidBody.velocity = new Vector2(input.x * MovementSpeed, input.y);
+        _currentMovement = _playerInput.GetDirection();
+        JumpHandler();
+    }
+
+    private void FixedUpdate()
+    {
+        _rigidBody.velocity = new Vector2(_currentMovement.x * MovementSpeed, _rigidBody.velocity.y);
+    }
+
+    private void JumpHandler()
+    {
+        if (_playerInput.IsJumpKeyPressed() && _playerCollision.IsInGround)
+        {
+            _rigidBody.velocity = Vector2.up * JumpForce;
+            //_rigidBody.AddForce(Vector2.up * JumpForce, ForceMode2D.Impulse);
+        }
+
+        //if (_rigidBody.velocity.y >= 0)
+        //{
+        //    _rigidBody.gravityScale = _jumpingGravityScale;
+        //}
+        //else
+        //{
+        //    _rigidBody.gravityScale = _fallingGravityScale;
+        //}
     }
 }

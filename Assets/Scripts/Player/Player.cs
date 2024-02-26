@@ -9,7 +9,7 @@ public class Player : GenericSingleton<Player>
     [SerializeField]
     private int _lives;
     public int Lives { get => _lives; set => _lives = value; }
-    public bool IsInGround { get; set; }
+
     public bool IsImmune { get; set; }
 
     [SerializeField]

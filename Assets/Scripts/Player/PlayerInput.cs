@@ -16,4 +16,9 @@ public class PlayerInput : MonoBehaviour
     {
         return new Vector3(GetHorizontalAxis(), GetVerticalAxis()).normalized;
     }
+
+    public bool IsJumpKeyPressed()
+    {
+        return Input.GetKeyDown(KeyCode.Space);
+    }
 }
