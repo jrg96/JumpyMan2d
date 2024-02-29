@@ -1,5 +1,9 @@
 using UnityEngine;
 
+/// <summary>
+/// Class used to detected if an entity (enemy or player) is somehow hitting
+/// the ground (useful to detected if jumping is allowed)
+/// </summary>
 public class GroundEntityCollision : MonoBehaviour
 {
     [SerializeField]

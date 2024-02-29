@@ -136,6 +136,10 @@ GameObject:
   - component: {fileID: 80405219}
   - component: {fileID: 80405223}
   - component: {fileID: 80405222}
+  - component: {fileID: 80405226}
+  - component: {fileID: 80405225}
+  - component: {fileID: 80405224}
+  - component: {fileID: 80405227}
   m_Layer: 0
   m_Name: slime_0
   m_TagString: Untagged
@@ -225,7 +229,7 @@ Transform:
   m_GameObject: {fileID: 80405218}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.399195, y: -0.070616364, z: 0}
+  m_LocalPosition: {x: -3.41, y: -0.070616364, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -293,6 +297,64 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.18}
   serializedVersion: 2
   m_Radius: 0.35
+--- !u!114 &80405224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 80405218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bfc74929ec354748b57eef7725c9b9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _groundRayLength: 0.8
+  _groundLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
+--- !u!114 &80405225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 80405218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f88d89bed38d70d47874a200c9decaa5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &80405226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 80405218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d243ffc85ac5fa74488e49cf61e60bb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  _radius: 0
+  _groundRayDist: 0
+--- !u!114 &80405227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 80405218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99c0b6aa612effa4487b54cd05a7ae83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _movementSpeed: 1
 --- !u!1 &148998987
 GameObject:
   m_ObjectHideFlags: 0
