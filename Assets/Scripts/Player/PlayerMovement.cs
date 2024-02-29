@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Windows;
 
-[RequireComponent(typeof(PlayerInput), typeof(PlayerCollision))]
+[RequireComponent(typeof(PlayerInput), typeof(PlayerCollision), typeof(PlayerAnimation))]
 public class PlayerMovement : MonoBehaviour
 {
     /*
