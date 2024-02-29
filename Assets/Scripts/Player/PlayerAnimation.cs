@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class PlayerAnimation : MonoBehaviour
 {
-    private PlayerCollision _playerCollision;
+    private GroundEntityCollision _groundEntityCollision;
     private PlayerInput _playerInput;
     private Animator _animator;
 
     private void Awake()
     {
-        _playerCollision = GetComponent<PlayerCollision>();
+        _groundEntityCollision = GetComponent<GroundEntityCollision>();
         _playerInput = GetComponent<PlayerInput>();
         _animator = GetComponent<Animator>();
     }
@@ -22,7 +22,7 @@ public class PlayerAnimation : MonoBehaviour
 
     private void SendAnimationStateData(Vector3 direction)
     {
-        _animator.SetBool("isGrounded", _playerCollision.IsInGround);
+        _animator.SetBool("isGrounded", _groundEntityCollision.IsInGround);
         _animator.SetBool("isMoving", direction.x != 0);
     }
 

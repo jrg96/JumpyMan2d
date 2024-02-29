@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerCollision : MonoBehaviour
+public class GroundEntityCollision : MonoBehaviour
 {
     [SerializeField]
     private LayerMask _layerMask;

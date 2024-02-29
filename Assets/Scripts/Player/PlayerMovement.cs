@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Windows;
 
-[RequireComponent(typeof(PlayerInput), typeof(PlayerCollision), typeof(PlayerAnimation))]
+[RequireComponent(typeof(PlayerInput), typeof(GroundEntityCollision), typeof(PlayerAnimation))]
 public class PlayerMovement : MonoBehaviour
 {
     /*
@@ -17,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField]
     private PlayerInput _playerInput;
-    private PlayerCollision _playerCollision;
+    private GroundEntityCollision _groundEntityCollision;
     private Rigidbody2D _rigidBody;
 
     private Vector3 _currentMovement;
@@ -29,7 +29,7 @@ public class PlayerMovement : MonoBehaviour
     private void Awake()
     {
         _playerInput = GetComponent<PlayerInput>();
-        _playerCollision = GetComponent<PlayerCollision>();
+        _groundEntityCollision = GetComponent<GroundEntityCollision>();
         _rigidBody = GetComponent<Rigidbody2D>();
     }
 
@@ -46,7 +46,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void JumpHandler()
     {
-        if (_playerInput.IsJumpKeyPressed() && _playerCollision.IsInGround)
+        if (_playerInput.IsJumpKeyPressed() && _groundEntityCollision.IsInGround)
         {
             _rigidBody.velocity = Vector2.up * JumpForce;
             //_rigidBody.AddForce(Vector2.up * JumpForce, ForceMode2D.Impulse);
