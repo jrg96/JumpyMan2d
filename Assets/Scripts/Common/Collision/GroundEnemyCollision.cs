@@ -1,3 +1,5 @@
+using System;
+using System.Linq;
 using UnityEngine;
 
 /// <summary>
@@ -18,6 +20,16 @@ public class GroundEnemyCollision : MonoBehaviour
     public bool FallingLeft { get; private set; }
     public bool FallingRight { get; private set; }
 
+    [SerializeField]
+    private float _rightLeftRayLength;
+    [SerializeField]
+    private string[] _enemyTags;
+    public bool LeftGroundCollision { get; private set; }
+    public bool RightGroundCollision { get; private set; }
+    public bool LeftEnemyCollision { get; private set; }
+    public bool RightEnemyCollision { get; private set; }
+
+
     private SpriteRenderer _spriteRenderer;
 
 
@@ -29,10 +41,14 @@ public class GroundEnemyCollision : MonoBehaviour
     private void FixedUpdate()
     {
         CalculateFallScenario();
+        CheckHorizontalCollision();
     }
 
     private void CalculateFallScenario()
     {
+        FallingLeft = false;
+        FallingRight = false;
+
         // calculate top right and top left corner of the enemy
         Vector2 center = new Vector2(transform.position.x, transform.position.y);
         Vector2 bottomLeft = center - new Vector2(_spriteRenderer.bounds.extents.x, _spriteRenderer.bounds.extents.y);
@@ -41,5 +57,55 @@ public class GroundEnemyCollision : MonoBehaviour
         // Cast both rays on both sides to check where it is falling (if falling at all)
         FallingLeft = !Physics2D.Raycast(bottomLeft, Vector2.down, _groundRayLength, _groundLayerMask);
         FallingRight = !Physics2D.Raycast(bottomRight, Vector2.down, _groundRayLength, _groundLayerMask);
+
+        // Debug raycasts
+        Debug.DrawRay(bottomLeft, Vector2.down * _rightLeftRayLength, Color.red);
+        Debug.DrawRay(bottomRight, Vector2.down * _rightLeftRayLength, Color.red);
+    }
+
+    private void CheckHorizontalCollision()
+    {
+        LeftGroundCollision = false;
+        LeftEnemyCollision = false;
+        RightGroundCollision = false;
+        RightEnemyCollision = false;
+
+        Vector2 center = new Vector2(transform.position.x, transform.position.y);
+
+        RaycastHit2D leftCollision = Physics2D.Raycast(center, Vector2.left, _rightLeftRayLength);
+        RaycastHit2D rightCollision = Physics2D.Raycast(center, Vector2.right, _rightLeftRayLength);
+
+        // if colliders are not null, means we're hitting something
+        if (leftCollision.collider != null)
+        {
+            LayerMask colliderLayerMask = leftCollision.collider.gameObject.layer;
+
+            if (colliderLayerMask == _groundLayerMask.value)
+            {
+                LeftGroundCollision = true;
+            }
+            else if (_enemyTags.Contains(leftCollision.collider.tag))
+            {
+                LeftEnemyCollision = true;
+            }
+        }
+
+        if (rightCollision.collider != null)
+        {
+            LayerMask colliderLayerMask = rightCollision.collider.gameObject.layer;
+
+            if (colliderLayerMask == _groundLayerMask)
+            {
+                RightGroundCollision = true;
+            }
+            else if (_enemyTags.Contains(rightCollision.collider.tag))
+            {
+                RightEnemyCollision = true;
+            }
+        }
+
+        // Debug raycasts
+        Debug.DrawRay(center, Vector2.right * _rightLeftRayLength, Color.red);
+        Debug.DrawRay(center, Vector2.left * _rightLeftRayLength, Color.red);
     }
 }

@@ -31,11 +31,15 @@ public class SlimeGroundEnemyMovement : MonoBehaviour
 
     private void CheckChangeDirection()
     {
-        if(_groundEnemyCollision.FallingRight)
+        if(_groundEnemyCollision.FallingRight 
+            || _groundEnemyCollision.RightEnemyCollision 
+            || _groundEnemyCollision.RightGroundCollision)
         {
             _movementDirection = -_movementSpeed;
         }
-        else if(_groundEnemyCollision.FallingLeft)
+        else if(_groundEnemyCollision.FallingLeft
+            || _groundEnemyCollision.LeftEnemyCollision
+            || _groundEnemyCollision.LeftGroundCollision)
         {
             _movementDirection = _movementSpeed;
         }
