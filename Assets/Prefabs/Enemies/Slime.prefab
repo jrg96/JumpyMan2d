@@ -144,9 +144,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.18}
+  m_Offset: {x: 0, y: -0.27}
   serializedVersion: 2
-  m_Radius: 0.35
+  m_Radius: 0.23
 --- !u!50 &2900395134732622643
 Rigidbody2D:
   serializedVersion: 4
@@ -215,11 +215,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bfc74929ec354748b57eef7725c9b9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _groundRayLength: 0.8
+  _groundRayLength: 1
   _groundLayerMask:
     serializedVersion: 2
     m_Bits: 64
-  _rightLeftRayLength: 0.4
+  _rightLeftRayLength: 0.5
   _enemyTags:
   - GroundEnemy
 --- !u!114 &6178035781128093098

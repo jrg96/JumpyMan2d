@@ -57,8 +57,8 @@ public class GroundEnemyCollision : MonoBehaviour
 
         // calculate top right and top left corner of the enemy
         Vector2 center = new Vector2(transform.position.x, transform.position.y);
-        Vector2 bottomLeft = center - new Vector2(_spriteRenderer.bounds.extents.x, _spriteRenderer.bounds.extents.y);
-        Vector2 bottomRight = center + new Vector2(_spriteRenderer.bounds.extents.x, -_spriteRenderer.bounds.extents.y);
+        Vector2 bottomLeft = center - new Vector2(_spriteRenderer.bounds.extents.x, _spriteRenderer.bounds.extents.y/2);
+        Vector2 bottomRight = center + new Vector2(_spriteRenderer.bounds.extents.x, -_spriteRenderer.bounds.extents.y/2);
 
         // Cast both rays on both sides to check where it is falling (if falling at all)
         FallingLeft = !Physics2D.Raycast(bottomLeft, Vector2.down, _groundRayLength, _groundLayerMask);
