@@ -7,9 +7,9 @@ using static UnityEditor.Experimental.GraphView.GraphView;
 /// Class used for collision detection for ground enemies, detects
 /// 3 types of collision:
 /// 
-/// *) Near falling
-/// *) Other enemy collision
-/// *) Horizontal ground collision
+/// *) Near falling detection
+/// *) Collision with other enemy
+/// *) Collision with ground (vertical wall)
 /// 
 /// </summary>
 public class GroundEnemyCollision : MonoBehaviour

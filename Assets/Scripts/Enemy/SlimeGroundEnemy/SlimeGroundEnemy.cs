@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[RequireComponent(typeof(SlimeGroundEnemyMovement))]
+[RequireComponent(typeof(GroundEnemyMovement))]
 public class SlimeGroundEnemy : MonoBehaviour
 {
     [SerializeField]
@@ -8,11 +8,11 @@ public class SlimeGroundEnemy : MonoBehaviour
     [SerializeField]
     private float _verticalKnockbackForce;
 
-    private SlimeGroundEnemyMovement _slimeGroundEnemyMovement;
+    private GroundEnemyMovement _slimeGroundEnemyMovement;
 
     private void Awake()
     {
-        _slimeGroundEnemyMovement = GetComponent<SlimeGroundEnemyMovement>();
+        _slimeGroundEnemyMovement = GetComponent<GroundEnemyMovement>();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

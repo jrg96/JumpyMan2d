@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(GroundEntityCollision), typeof(GroundEnemyCollision))]
-public class SlimeGroundEnemyMovement : MonoBehaviour, IMoveableEntity
+public class GroundEnemyMovement : MonoBehaviour, IMoveableEntity
 {
     [SerializeField]
     private float _movementSpeed;
