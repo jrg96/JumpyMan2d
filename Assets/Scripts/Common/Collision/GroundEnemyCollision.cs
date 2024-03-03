@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 /// <summary>
 /// Class used for collision detection for ground enemies, detects
@@ -17,6 +18,7 @@ public class GroundEnemyCollision : MonoBehaviour
     private float _groundRayLength;
     [SerializeField]
     private LayerMask _groundLayerMask;
+    private int _groundLayerNumber;
     public bool FallingLeft { get; private set; }
     public bool FallingRight { get; private set; }
 
@@ -32,6 +34,10 @@ public class GroundEnemyCollision : MonoBehaviour
 
     private SpriteRenderer _spriteRenderer;
 
+    private void Start()
+    {
+        _groundLayerNumber = (int)Mathf.Log(_groundLayerMask.value, 2);
+    }
 
     private void Awake()
     {
@@ -78,9 +84,7 @@ public class GroundEnemyCollision : MonoBehaviour
         // if colliders are not null, means we're hitting something
         if (leftCollision.collider != null)
         {
-            LayerMask colliderLayerMask = leftCollision.collider.gameObject.layer;
-
-            if (colliderLayerMask == _groundLayerMask.value)
+            if (leftCollision.collider.gameObject.layer == _groundLayerNumber)
             {
                 LeftGroundCollision = true;
             }
@@ -92,9 +96,7 @@ public class GroundEnemyCollision : MonoBehaviour
 
         if (rightCollision.collider != null)
         {
-            LayerMask colliderLayerMask = rightCollision.collider.gameObject.layer;
-
-            if (colliderLayerMask == _groundLayerMask)
+            if (rightCollision.collider.gameObject.layer == _groundLayerNumber)
             {
                 RightGroundCollision = true;
             }
