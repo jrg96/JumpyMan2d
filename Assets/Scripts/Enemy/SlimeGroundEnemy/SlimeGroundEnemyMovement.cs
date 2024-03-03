@@ -1,17 +1,24 @@
 using UnityEngine;
 
-public class SlimeGroundEnemyMovement : MonoBehaviour
+[RequireComponent(typeof(GroundEntityCollision), typeof(GroundEnemyCollision))]
+public class SlimeGroundEnemyMovement : MonoBehaviour, IMoveableEntity
 {
     [SerializeField]
     private float _movementSpeed;
+    public float MovementSpeed { get => _movementSpeed; private set => _movementSpeed = value; }
+
     private float _movementDirection;
+    public float MovementDirection { get => _movementDirection; private set => _movementDirection = value; }
+    public bool InnerMovementActive { get; set; } = true;
 
     private GroundEnemyCollision _groundEnemyCollision;
+    private GroundEntityCollision _groundEntityCollision;
     private Rigidbody2D _rigidBody;
 
     private void Awake()
     {
         _groundEnemyCollision = GetComponent<GroundEnemyCollision>();
+        _groundEntityCollision = GetComponent<GroundEntityCollision>();
         _rigidBody = GetComponent<Rigidbody2D>();
     }
 
@@ -25,8 +32,11 @@ public class SlimeGroundEnemyMovement : MonoBehaviour
     // Update is called once per frame
     private void FixedUpdate()
     {
-        CheckChangeDirection();
-        _rigidBody.velocity = new Vector2(_movementDirection, _rigidBody.velocity.y);
+        if (InnerMovementActive)
+        {
+            CheckChangeDirection();
+            _rigidBody.velocity = new Vector2(_movementDirection, _rigidBody.velocity.y);
+        }
     }
 
     private void CheckChangeDirection()

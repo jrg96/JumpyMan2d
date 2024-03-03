@@ -1,25 +1,16 @@
 using UnityEngine;
 
-[RequireComponent(typeof(PlayerMovement))]
+[RequireComponent(typeof(PlayerMovement), typeof(DamageablePlayer))]
 public class Player : GenericSingleton<Player>
 {
-    /*
-     * Player properties
-     */
-    [SerializeField]
-    private int _lives; 
-    public int Lives { get => _lives; set => _lives = value; }
-
-    public bool IsImmune { get; set; }
-
-    [SerializeField]
     private PlayerMovement _playerMovement;
-
+    private DamageablePlayer _damageablePlayer;
 
     private new void Awake()
     {
         base.Awake();
         _playerMovement = GetComponent<PlayerMovement>();
+        _damageablePlayer = GetComponent<DamageablePlayer>();
     }
 
     // Start is called before the first frame update

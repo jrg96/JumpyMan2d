@@ -19,11 +19,12 @@ public class GenericItem : MonoBehaviour
         // check if colliding with player
         if (collision.tag == PlayerTag)
         {
+            IDamageable damageableEntity = collision.gameObject.GetComponent<IDamageable>();
             Game.Instance.AddScore(ScoreToAdd);
-            Game.Instance.AddLives(LivesToAdd);
+            damageableEntity.AddLives(LivesToAdd);
 
-            Debug.Log("Lives: " + Game.Instance.Lives);
             Debug.Log("Score: " + Game.Instance.Score);
+            Debug.Log("Lives: " + damageableEntity.Lives);
 
             // Destroy itself
             Destroy(gameObject);

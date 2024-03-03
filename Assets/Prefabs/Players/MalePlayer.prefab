@@ -18,7 +18,8 @@ GameObject:
   - component: {fileID: 4587134928942601798}
   - component: {fileID: 4433247961415023362}
   - component: {fileID: 3223443553839480866}
-  m_Layer: 0
+  - component: {fileID: 2541194216995279806}
+  m_Layer: 7
   m_Name: MalePlayer
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -197,8 +198,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51490fa720287fd4eb6cec0257e4059b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _lives: 5
-  _playerMovement: {fileID: 0}
 --- !u!114 &5120111745556578538
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -255,3 +254,24 @@ MonoBehaviour:
     m_Bits: 64
   _radius: 0.3
   _groundRayDist: 0.5
+--- !u!114 &2541194216995279806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2050635380933970826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d4cdb9186d484e4c84a1fd93c4ed939, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _lives: 3
+  _maxLives: 3
+  _immuneTime: 3
+  _playerLayerMask:
+    serializedVersion: 2
+    m_Bits: 128
+  _enemyLayerMask:
+    serializedVersion: 2
+    m_Bits: 256

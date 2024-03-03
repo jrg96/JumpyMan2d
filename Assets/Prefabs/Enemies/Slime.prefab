@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 1287594054896679219}
   - component: {fileID: 3356338252790312567}
   - component: {fileID: 6178035781128093098}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Slime
   m_TagString: GroundEnemy
   m_Icon: {fileID: 0}
@@ -203,6 +203,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f88d89bed38d70d47874a200c9decaa5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _horizontalKnockbackForce: 12
+  _verticalKnockbackForce: 5
 --- !u!114 &3356338252790312567
 MonoBehaviour:
   m_ObjectHideFlags: 0

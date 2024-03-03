@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.Windows;
 
 [RequireComponent(typeof(PlayerInput), typeof(GroundEntityCollision), typeof(PlayerAnimation))]
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : MonoBehaviour, IMoveableEntity
 {
     /*
      * Movement related properties
@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private float _jumpForce;
     public float JumpForce { get => _jumpForce; set => _jumpForce = value; }
+    public bool InnerMovementActive { get; set; } = true;
 
     [SerializeField]
     private PlayerInput _playerInput;
@@ -41,7 +42,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        _rigidBody.velocity = new Vector2(_currentMovement.x * MovementSpeed, _rigidBody.velocity.y);
+        if (InnerMovementActive)
+        {
+            _rigidBody.velocity = new Vector2(_currentMovement.x * MovementSpeed, _rigidBody.velocity.y);
+        }
     }
 
     private void JumpHandler()
