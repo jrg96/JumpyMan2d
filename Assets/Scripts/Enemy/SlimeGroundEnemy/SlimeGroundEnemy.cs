@@ -7,6 +7,8 @@ public class SlimeGroundEnemy : MonoBehaviour
     private float _horizontalKnockbackForce;
     [SerializeField]
     private float _verticalKnockbackForce;
+    [SerializeField]
+    private int _scoreToGain;
 
     private GroundEnemyMovement _slimeGroundEnemyMovement;
 
@@ -31,6 +33,19 @@ public class SlimeGroundEnemy : MonoBehaviour
             }
 
             player.OnHit(1, direction * new Vector2(_horizontalKnockbackForce, _verticalKnockbackForce));
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        // check if collision is from player
+        Player player = collision.gameObject.GetComponent<Player>();
+
+        if (player != null)
+        {
+            // Add score and destroy slime object
+            Game.Instance.AddScore(_scoreToGain);
+            Destroy(gameObject);
         }
     }
 }
