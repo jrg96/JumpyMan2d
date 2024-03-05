@@ -55,11 +55,17 @@ public class DamageablePlayer : MonoBehaviour, IDamageable
         _playerLayerNumber = (int)Mathf.Log(_playerLayerMask.value, 2);
         _enemyLayerNumber = (int)Mathf.Log(_enemyLayerMask.value, 2);
     }
-    public void OnHit(int damage, Vector2 knockback)
+    public void OnHit(int damage, Vector2 knockback, bool resetSpeed = false)
     {
         if (!Immune)
         {
             Lives -= damage;
+
+            if (resetSpeed)
+            {
+                _rigidBody.velocity = new Vector2(0, 0);
+            }
+
             StartCoroutine(ApplyKnockbackForce(knockback, 0.2f));
             StartCoroutine(ImmuneRoutine());
         }
