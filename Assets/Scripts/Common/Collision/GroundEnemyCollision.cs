@@ -19,6 +19,11 @@ public class GroundEnemyCollision : MonoBehaviour
     [SerializeField]
     private LayerMask _groundLayerMask;
     private int _groundLayerNumber;
+
+    [SerializeField]
+    private LayerMask _enemyLayerMask;
+    private int _enemyLayerNumber;
+
     public bool FallingLeft { get; private set; }
     public bool FallingRight { get; private set; }
 
@@ -37,6 +42,7 @@ public class GroundEnemyCollision : MonoBehaviour
     private void Start()
     {
         _groundLayerNumber = (int)Mathf.Log(_groundLayerMask.value, 2);
+        _enemyLayerNumber = (int)Mathf.Log(_enemyLayerMask.value, 2);
     }
 
     private void Awake()
@@ -76,7 +82,7 @@ public class GroundEnemyCollision : MonoBehaviour
         RightGroundCollision = false;
         RightEnemyCollision = false;
 
-        Vector2 center = new Vector2(transform.position.x, transform.position.y);
+        Vector2 center = new Vector2(transform.position.x, transform.position.y - 0.1f);
 
         RaycastHit2D leftCollision = Physics2D.Raycast(center, Vector2.left, _rightLeftRayLength);
         RaycastHit2D rightCollision = Physics2D.Raycast(center, Vector2.right, _rightLeftRayLength);
@@ -88,7 +94,7 @@ public class GroundEnemyCollision : MonoBehaviour
             {
                 LeftGroundCollision = true;
             }
-            else if (_enemyTags.Contains(leftCollision.collider.tag))
+            else if (leftCollision.collider.gameObject.layer == _enemyLayerNumber)
             {
                 LeftEnemyCollision = true;
             }
@@ -100,7 +106,7 @@ public class GroundEnemyCollision : MonoBehaviour
             {
                 RightGroundCollision = true;
             }
-            else if (_enemyTags.Contains(rightCollision.collider.tag))
+            else if (rightCollision.collider.gameObject.layer == _enemyLayerNumber)
             {
                 RightEnemyCollision = true;
             }
