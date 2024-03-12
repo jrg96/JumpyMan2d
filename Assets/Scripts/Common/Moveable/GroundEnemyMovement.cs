@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(GroundEntityCollision), typeof(GroundEnemyCollision))]

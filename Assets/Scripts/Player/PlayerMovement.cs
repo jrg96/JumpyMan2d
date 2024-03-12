@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.Windows;
 
 [RequireComponent(typeof(PlayerInput), typeof(GroundEntityCollision), typeof(PlayerAnimation))]
 public class PlayerMovement : MonoBehaviour, IMoveableEntity
@@ -54,17 +53,7 @@ public class PlayerMovement : MonoBehaviour, IMoveableEntity
         if (_playerInput.IsJumpKeyPressed() && _groundEntityCollision.IsInGround)
         {
             _rigidBody.velocity = Vector2.up * JumpForce;
-            //_rigidBody.AddForce(Vector2.up * JumpForce, ForceMode2D.Impulse);
         }
-
-        //if (_rigidBody.velocity.y >= 0)
-        //{
-        //    _rigidBody.gravityScale = _jumpingGravityScale;
-        //}
-        //else
-        //{
-        //    _rigidBody.gravityScale = _fallingGravityScale;
-        //}
     }
 
     public void ApplyKnockbackForce(Vector2 knockback, float delay, bool resetSpeed)

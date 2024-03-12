@@ -81,16 +81,6 @@ public class DamageablePlayer : MonoBehaviour, IDamageable
         Lives += lives;
     }
 
-    //private IEnumerator ApplyKnockbackForce(Vector2 knockback, float delay)
-    //{
-    //    IMoveableEntity moveableEntity = GetComponent<IMoveableEntity>();
-    //    moveableEntity.InnerMovementActive = false;
-    //    _rigidBody.AddForce(knockback, ForceMode2D.Impulse);
-
-    //    yield return new WaitForSeconds(delay);
-    //    moveableEntity.InnerMovementActive = true;
-    //}
-
     private IEnumerator ImmuneRoutine()
     {
         Immune = true;

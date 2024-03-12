@@ -1,7 +1,4 @@
-using System;
-using System.Linq;
 using UnityEngine;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 /// <summary>
 /// Class used for collision detection for ground enemies, detects
