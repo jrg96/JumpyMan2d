@@ -67,9 +67,20 @@ public class PlayerMovement : MonoBehaviour, IMoveableEntity
         //}
     }
 
-    public IEnumerator ApplyKnockbackForce(Vector2 knockback, float delay)
+    public void ApplyKnockbackForce(Vector2 knockback, float delay, bool resetSpeed)
+    {
+        StartCoroutine(ApplyKnockbackForceRoutine(knockback, delay, resetSpeed));
+    }
+
+    public IEnumerator ApplyKnockbackForceRoutine(Vector2 knockback, float delay, bool resetSpeed)
     {
         InnerMovementActive = false;
+
+        if (resetSpeed)
+        {
+            _rigidBody.velocity = new Vector2(0, 0);
+        }
+
         _rigidBody.AddForce(knockback, ForceMode2D.Impulse);
 
         yield return new WaitForSeconds(delay);

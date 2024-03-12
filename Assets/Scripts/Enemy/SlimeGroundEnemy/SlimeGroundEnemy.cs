@@ -48,6 +48,10 @@ public class SlimeGroundEnemy : MonoBehaviour
 
         if (player != null)
         {
+            Vector2 knockback = new Vector2(0, _verticalKnockbackForce);
+            IMoveableEntity moveableEntity = collision.gameObject.GetComponent<IMoveableEntity>();
+            moveableEntity.ApplyKnockbackForce(knockback, 0.2f, true);
+
             // Add score and destroy slime object
             Game.Instance.AddScore(_scoreToGain);
             Destroy(gameObject);

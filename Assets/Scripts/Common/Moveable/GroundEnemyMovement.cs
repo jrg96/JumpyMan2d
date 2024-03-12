@@ -56,7 +56,7 @@ public class GroundEnemyMovement : MonoBehaviour, IMoveableEntity
         }
     }
 
-    public IEnumerator ApplyKnockbackForce(Vector2 knockback, float delay)
+    public void ApplyKnockbackForce(Vector2 knockback, float delay, bool resetSpeed)
     {
         throw new System.NotImplementedException();
     }

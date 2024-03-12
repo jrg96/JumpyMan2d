@@ -36,7 +36,7 @@ public class VerticalProjectileEnemyMovement : MonoBehaviour, IMoveableEntity
         _rigidBody.AddForce(Vector2.up * ForceApplied);
     }
 
-    public IEnumerator ApplyKnockbackForce(Vector2 knockback, float delay)
+    public void ApplyKnockbackForce(Vector2 knockback, float delay, bool resetSpeed)
     {
         throw new System.NotImplementedException();
     }

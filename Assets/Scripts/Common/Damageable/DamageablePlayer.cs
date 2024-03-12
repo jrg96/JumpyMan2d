@@ -60,15 +60,9 @@ public class DamageablePlayer : MonoBehaviour, IDamageable
         if (!Immune)
         {
             IMoveableEntity moveableEntity = GetComponent<IMoveableEntity>();
-
             Lives -= damage;
 
-            if (resetSpeed)
-            {
-                _rigidBody.velocity = new Vector2(0, 0);
-            }
-
-            StartCoroutine(moveableEntity.ApplyKnockbackForce(knockback, 0.5f));
+            moveableEntity.ApplyKnockbackForce(knockback, 0.5f, true);
             StartCoroutine(ImmuneRoutine());
         }
     }
