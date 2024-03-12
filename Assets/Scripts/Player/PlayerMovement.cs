@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Windows;
 
@@ -64,5 +65,14 @@ public class PlayerMovement : MonoBehaviour, IMoveableEntity
         //{
         //    _rigidBody.gravityScale = _fallingGravityScale;
         //}
+    }
+
+    public IEnumerator ApplyKnockbackForce(Vector2 knockback, float delay)
+    {
+        InnerMovementActive = false;
+        _rigidBody.AddForce(knockback, ForceMode2D.Impulse);
+
+        yield return new WaitForSeconds(delay);
+        InnerMovementActive = true;
     }
 }

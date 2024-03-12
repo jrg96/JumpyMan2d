@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(GroundEntityCollision), typeof(GroundEnemyCollision))]
@@ -53,5 +54,10 @@ public class GroundEnemyMovement : MonoBehaviour, IMoveableEntity
         {
             _movementDirection = _movementSpeed;
         }
+    }
+
+    public IEnumerator ApplyKnockbackForce(Vector2 knockback, float delay)
+    {
+        throw new System.NotImplementedException();
     }
 }

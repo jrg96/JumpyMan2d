@@ -59,6 +59,8 @@ public class DamageablePlayer : MonoBehaviour, IDamageable
     {
         if (!Immune)
         {
+            IMoveableEntity moveableEntity = GetComponent<IMoveableEntity>();
+
             Lives -= damage;
 
             if (resetSpeed)
@@ -66,7 +68,7 @@ public class DamageablePlayer : MonoBehaviour, IDamageable
                 _rigidBody.velocity = new Vector2(0, 0);
             }
 
-            StartCoroutine(ApplyKnockbackForce(knockback, 0.2f));
+            StartCoroutine(moveableEntity.ApplyKnockbackForce(knockback, 0.5f));
             StartCoroutine(ImmuneRoutine());
         }
     }
@@ -85,15 +87,15 @@ public class DamageablePlayer : MonoBehaviour, IDamageable
         Lives += lives;
     }
 
-    private IEnumerator ApplyKnockbackForce(Vector2 knockback, float delay)
-    {
-        IMoveableEntity moveableEntity = GetComponent<IMoveableEntity>();
-        moveableEntity.InnerMovementActive = false;
-        _rigidBody.AddForce(knockback, ForceMode2D.Impulse);
+    //private IEnumerator ApplyKnockbackForce(Vector2 knockback, float delay)
+    //{
+    //    IMoveableEntity moveableEntity = GetComponent<IMoveableEntity>();
+    //    moveableEntity.InnerMovementActive = false;
+    //    _rigidBody.AddForce(knockback, ForceMode2D.Impulse);
 
-        yield return new WaitForSeconds(delay);
-        moveableEntity.InnerMovementActive = true;
-    }
+    //    yield return new WaitForSeconds(delay);
+    //    moveableEntity.InnerMovementActive = true;
+    //}
 
     private IEnumerator ImmuneRoutine()
     {

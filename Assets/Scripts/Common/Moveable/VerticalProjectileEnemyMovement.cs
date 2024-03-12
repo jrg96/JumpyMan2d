@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class VerticalProjectileEnemyMovement : MonoBehaviour, IMoveableEntity
@@ -37,7 +36,8 @@ public class VerticalProjectileEnemyMovement : MonoBehaviour, IMoveableEntity
         _rigidBody.AddForce(Vector2.up * ForceApplied);
     }
 
-    void Update()
+    public IEnumerator ApplyKnockbackForce(Vector2 knockback, float delay)
     {
+        throw new System.NotImplementedException();
     }
 }

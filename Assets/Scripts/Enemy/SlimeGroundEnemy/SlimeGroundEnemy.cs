@@ -24,15 +24,20 @@ public class SlimeGroundEnemy : MonoBehaviour
 
         if (player != null)
         {
-            // Calculate knockback and apply damage
-            Vector2 direction = Vector2.right + Vector2.up;
+            // Calculate direction the player hit the slime
+            Vector2 direction;
+            Vector3 collisionDirection = transform.InverseTransformPoint(collision.transform.transform.position);
 
-            if (_slimeGroundEnemyMovement.MovementDirection < 0)
+            if (collisionDirection.x > 0f)
+            {
+                direction = Vector2.right + Vector2.up;
+            }
+            else
             {
                 direction = Vector2.left + Vector2.up;
             }
 
-            player.OnHit(1, direction * new Vector2(_horizontalKnockbackForce, _verticalKnockbackForce));
+            player.OnHit(1, direction * new Vector2(_horizontalKnockbackForce, _verticalKnockbackForce), true);
         }
     }
 
