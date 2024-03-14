@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[RequireComponent(typeof(GroundEnemyMovement))]
+[RequireComponent(typeof(GroundEnemyMovement), typeof(SlimeGroundEnemyAnimation))]
 public class SlimeGroundEnemy : MonoBehaviour
 {
     [SerializeField]
@@ -9,6 +9,8 @@ public class SlimeGroundEnemy : MonoBehaviour
     private float _verticalKnockbackForce;
     [SerializeField]
     private int _scoreToGain;
+    [SerializeField]
+    private int _livesToRemove;
 
     private GroundEnemyMovement _slimeGroundEnemyMovement;
 
@@ -37,7 +39,7 @@ public class SlimeGroundEnemy : MonoBehaviour
                 direction = Vector2.left + Vector2.up;
             }
 
-            player.OnHit(1, direction * new Vector2(_horizontalKnockbackForce, _verticalKnockbackForce), true);
+            player.OnHit(_livesToRemove, direction * new Vector2(_horizontalKnockbackForce, _verticalKnockbackForce), true);
         }
     }
 
