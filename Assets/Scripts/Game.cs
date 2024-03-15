@@ -10,7 +10,7 @@ public class Game : GenericSingleton<Game>
     // Start is called before the first frame update
     void Start()
     {
-        
+        PauseGame(true);
     }
 
     // Update is called once per frame
@@ -24,11 +24,25 @@ public class Game : GenericSingleton<Game>
      */
     public void AddScore(int score)
     {
-        Score += score;
+        Game.Instance.Score += score;
     }
 
     public void GameOver()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void PauseGame(bool pause)
+    {
+        if (pause)
+        {
+            Game.Instance.GamePaused = true;
+            Time.timeScale = 0;
+        }
+        else
+        {
+            Game.Instance.GamePaused = false;
+            Time.timeScale = 1;
+        }
     }
 }
