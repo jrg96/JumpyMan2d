@@ -9,9 +9,6 @@ public class UIManager : GenericSingleton<UIManager>
     [SerializeField]
     private TextMeshProUGUI _txtScore;
 
-    [SerializeField]
-    private Transform _startScreen;
-
     private void FixedUpdate()
     {
         UIManager.Instance.UpdateGameStats();
@@ -27,19 +24,6 @@ public class UIManager : GenericSingleton<UIManager>
         if (player.Lives == 0)
         {
             Game.Instance.GameOver();
-            UIManager.Instance.ShowMainScreen();
         }
-    }
-
-    public void ShowMainScreen()
-    {
-        Game.Instance.PauseGame(true);
-        UIManager.Instance._startScreen.gameObject.SetActive(true);
-    }
-
-    public void HideMainScreen()
-    {
-        Game.Instance.PauseGame(false);
-        UIManager.Instance._startScreen.gameObject.SetActive(false);
     }
 }

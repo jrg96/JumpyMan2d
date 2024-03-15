@@ -6,19 +6,6 @@ public class Game : GenericSingleton<Game>
     public bool GamePaused { get; set; } = false;
     public int Score { get; private set; } = 0;
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        PauseGame(true);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     /*
      * Custom methods
      */
@@ -36,7 +23,7 @@ public class Game : GenericSingleton<Game>
         UIManager.Instance.ResetInstance();
         Game.Instance.ResetInstance();
 
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene("Splash Screen");
     }
 
     public void PauseGame(bool pause)
