@@ -12,7 +12,7 @@ public class TrapAnimation : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         // check if player is colliding with the trap
-        DamageablePlayer player = collision.collider.gameObject.GetComponent<DamageablePlayer>();
+        IDamageablePlayer player = collision.collider.gameObject.GetComponent<IDamageablePlayer>();
 
         if (player != null)
         {

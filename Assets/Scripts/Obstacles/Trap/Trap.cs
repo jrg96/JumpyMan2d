@@ -18,7 +18,7 @@ public class Trap : MonoBehaviour
     {
         // Check if collision is with a player, and if it is
         // start disappear coroutine
-        DamageablePlayer player = collision.collider.gameObject.GetComponent<DamageablePlayer>();
+        IDamageablePlayer player = collision.collider.gameObject.GetComponent<IDamageablePlayer>();
 
         if (player != null)
         {

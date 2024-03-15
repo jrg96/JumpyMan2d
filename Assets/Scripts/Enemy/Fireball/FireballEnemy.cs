@@ -6,7 +6,7 @@ public class FireballEnemy : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // check if collided object is player
-        DamageablePlayer damageablePlayer = collision.GetComponent<DamageablePlayer>();
+        IDamageablePlayer damageablePlayer = collision.GetComponent<IDamageablePlayer>();
 
         if (damageablePlayer != null)
         {

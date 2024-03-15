@@ -8,7 +8,7 @@ public class SlimeGroundEnemyAnimation : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // check if collision is from a damageable player
-        DamageablePlayer player = collision.gameObject.GetComponent<DamageablePlayer>();
+        IDamageablePlayer player = collision.gameObject.GetComponent<IDamageablePlayer>();
 
         if (player != null)
         {

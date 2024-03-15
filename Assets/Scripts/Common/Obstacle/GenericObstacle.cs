@@ -22,18 +22,18 @@ public class GenericObstacle : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // Check if object who activated the trigger is a player
-        DamageablePlayer player = collision.GetComponent<DamageablePlayer>();
+        IDamageablePlayer player = collision.GetComponent<IDamageablePlayer>();
         ApplyDamageLogic(player);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         // Check if object who activated the trigger is a player
-        DamageablePlayer player = collision.collider.gameObject.GetComponent<DamageablePlayer>(); ;
+        IDamageablePlayer player = collision.collider.gameObject.GetComponent<IDamageablePlayer>(); ;
         ApplyDamageLogic(player);
     }
 
-    private void ApplyDamageLogic(DamageablePlayer player)
+    private void ApplyDamageLogic(IDamageablePlayer player)
     {
         if (player != null)
         {

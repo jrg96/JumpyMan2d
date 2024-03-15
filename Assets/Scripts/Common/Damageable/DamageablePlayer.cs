@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class DamageablePlayer : MonoBehaviour, IDamageable
+public class DamageablePlayer : MonoBehaviour, IDamageablePlayer
 {
     [SerializeField]
     private int _lives;
