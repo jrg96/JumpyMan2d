@@ -23,6 +23,12 @@ public class UIManager : GenericSingleton<UIManager>
 
         Instance._txtScore.text = string.Format("{0:000}", Game.Instance.Score);
         Instance._txtLives.text = player.Lives.ToString();
+
+        if (player.Lives == 0)
+        {
+            Game.Instance.GameOver();
+            UIManager.Instance.ShowMainScreen();
+        }
     }
 
     public void ShowMainScreen()

@@ -29,6 +29,13 @@ public class Game : GenericSingleton<Game>
 
     public void GameOver()
     {
+        Time.timeScale = 0;
+        
+        // On Game Over, reset all singletons to reset all current states
+        Player.Instance.ResetInstance();
+        UIManager.Instance.ResetInstance();
+        Game.Instance.ResetInstance();
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 

@@ -8,4 +8,5 @@ public interface IDamageable
     void OnHit(int damage, Vector2 knockback, bool resetSpeed = false);
     void OnHit(int damage);
     void AddLives(int lives);
+    void ResetCollisionLayers();
 }

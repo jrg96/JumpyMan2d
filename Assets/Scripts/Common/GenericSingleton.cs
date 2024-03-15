@@ -38,4 +38,10 @@ public class GenericSingleton<T> : MonoBehaviour where T : Component
             Destroy(gameObject);
         }
     }
+
+    public virtual void ResetInstance()
+    {
+        Destroy(gameObject);
+        _instance = null;
+    }
 }

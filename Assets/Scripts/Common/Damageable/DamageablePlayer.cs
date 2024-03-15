@@ -30,7 +30,7 @@ public class DamageablePlayer : MonoBehaviour, IDamageable
 
     [SerializeField]
     private float _immuneTime;
-    public bool Immune { get; set; }
+    public bool Immune { get; set; } = false;
 
     [SerializeField]
     private LayerMask _playerLayerMask;
@@ -54,6 +54,8 @@ public class DamageablePlayer : MonoBehaviour, IDamageable
     {
         _playerLayerNumber = (int)Mathf.Log(_playerLayerMask.value, 2);
         _enemyLayerNumber = (int)Mathf.Log(_enemyLayerMask.value, 2);
+
+        ResetCollisionLayers();
     }
     public void OnHit(int damage, Vector2 knockback, bool resetSpeed = false)
     {
@@ -79,6 +81,11 @@ public class DamageablePlayer : MonoBehaviour, IDamageable
     public void AddLives(int lives)
     {
         Lives += lives;
+    }
+
+    public void ResetCollisionLayers()
+    {
+        Physics2D.IgnoreLayerCollision(_playerLayerNumber, _enemyLayerNumber, false);
     }
 
     private IEnumerator ImmuneRoutine()
