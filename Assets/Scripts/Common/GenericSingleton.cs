@@ -18,6 +18,7 @@ public class GenericSingleton<T> : MonoBehaviour where T : Component
                     GameObject obj = new GameObject();
                     obj.name = typeof(T).Name;
                     _instance = obj.AddComponent<T>();
+                    DontDestroyOnLoad(obj);
                 }
             }
 

@@ -22,7 +22,7 @@ public class SlimeGroundEnemy : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         // check if collision is from a damageable player
-        DamageablePlayer player = collision.gameObject.GetComponent<DamageablePlayer>();
+        IDamageablePlayer player = collision.gameObject.GetComponent<IDamageablePlayer>();
 
         if (player != null)
         {
