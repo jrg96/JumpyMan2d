@@ -24,8 +24,8 @@ public class BackgroundParallax : MonoBehaviour
 
     private void LateUpdate()
     {
-        displacement = (nextCamPosFrame - initCamPosFrame);
         nextCamPosFrame = transform.position.x;
+        displacement = (nextCamPosFrame - initCamPosFrame);  
 
         bg0.position = new Vector3(bg0.position.x + displacement * factor0, bg0.position.y, bg0.position.z);
         bg1.position = new Vector3(bg1.position.x + displacement * factor1, bg1.position.y, bg1.position.z);
