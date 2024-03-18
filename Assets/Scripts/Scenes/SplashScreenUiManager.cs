@@ -6,6 +6,7 @@ public class SplashScreenUiManager : MonoBehaviour
     public void StartGame()
     {
         Game.Instance.PauseGame(false);
-        SceneManager.LoadScene("World 1-1");
+        Game.Instance.LevelToTeleport = "World 1-1";
+        SceneManager.LoadScene("World Transition");
     }
 }

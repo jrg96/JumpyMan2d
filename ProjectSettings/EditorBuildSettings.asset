@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/World 1-2.unity
     guid: 85729106550a9ec4396277e52b15c052
+  - enabled: 1
+    path: Assets/Scenes/World Transition.unity
+    guid: cef05a172e5277849a915ffdbea95585
   m_configObjects: {}

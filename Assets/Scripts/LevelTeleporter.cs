@@ -22,7 +22,8 @@ public class LevelTeleporter : MonoBehaviour
     {
         if (player != null)
         {
-            SceneManager.LoadScene(_teleportToScene);
+            Game.Instance.LevelToTeleport = _teleportToScene;
+            SceneManager.LoadScene("World Transition");
         }
     }
 }

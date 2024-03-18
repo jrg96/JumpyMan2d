@@ -5,6 +5,7 @@ public class Game : GenericSingleton<Game>
 {
     public bool GamePaused { get; set; } = false;
     public int Score { get; private set; } = 0;
+    public string LevelToTeleport { get; set; }
 
     /*
      * Custom methods
